@@ -26,7 +26,10 @@ with open(Path(BASE_DIR, 'etc', 'secret_key.txt')) as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['tarok.pythonanywhere.com']
+if DEBUG:
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = ['tarok.pythonanywhere.com']
 
 
 # Application definition

@@ -45,29 +45,26 @@ def generate_contacts(request, times):
 
     def create_random_person():
         gender = random.choice(['male', 'female'])
-        person = {}
-        if gender == 'male':
-            person['first_name'] = fake.first_name_male()
-            person['last_name'] = fake.last_name_male()
-            person['middle_name'] = fake.middle_name_male()
-        elif gender == 'female':
-            person['first_name'] = fake.first_name_female()
-            person['last_name'] = fake.last_name_female()
-            person['middle_name'] = fake.middle_name_female()
-        person['phone_number'] = fake.phone_number()
-        return person
+        contact = None
+        match gender:
+            case 'male':
+                contact = Contacts(first_name=fake.first_name_male(),
+                                   last_name=fake.last_name_male(),
+                                   middle_name=fake.middle_name_male(),
+                                   phone_number=fake.phone_number())
+            case 'female':
+                contact = Contacts(first_name=fake.first_name_female(),
+                                   last_name=fake.last_name_female(),
+                                   middle_name=fake.middle_name_female(),
+                                   phone_number=fake.phone_number())
+        return contact
 
     contacts_quantity = Contacts.objects.count()
-    for _ in range(times):
-        if contacts_quantity < 100:
-            new_person = create_random_person()
-            result = Contacts.objects.create(first_name=new_person['first_name'],
-                                             last_name=new_person['last_name'],
-                                             middle_name=new_person['middle_name'],
-                                             phone_number=new_person['phone_number'])
-            if result is not None:
-                contacts_quantity += 1
-
+    if contacts_quantity + times < 100:
+        new_contacts = []
+        for _ in range(times):
+            new_contacts.append(create_random_person())
+        Contacts.objects.bulk_create(new_contacts)
     return redirect(show_contacts)
 
 
