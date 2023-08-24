@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Добавить контакт</title>
+    <title>Удалить контакт</title>
 </head>
 <body>
-<h4>Добавить контакт</h4>
+<h4>Удалить контакт</h4>
 <form method="post" action=''>
     {% csrf_token %}
     {{ form.errors }}
     {{ form }}
     <input type="submit" value="Подтвердить">
+    <button onclick="location.href = '{% url 'show_contacts' %}'">Отмена</button>
 </form>
 
 </body>
