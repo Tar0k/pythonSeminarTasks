@@ -14,7 +14,19 @@ fake = Faker("ru-Ru")
 
 
 def show_contacts(request):
-    data = Contacts.objects.all
+    if request.method == "POST":
+        data = Contacts.objects
+        if request.POST["first_name"] != "":
+            data = data.filter(first_name=request.POST["first_name"])
+        if request.POST["middle_name"] != "":
+            data = data.filter(middle_name=request.POST["middle_name"])
+        if request.POST["last_name"] != "":
+            data = data.filter(last_name=request.POST["last_name"])
+        if request.POST["phone_number"] != "":
+            data = data.filter(phone_number=request.POST["phone_number"])
+        data = data.all()
+    else:
+        data = Contacts.objects.all()
     context = {"data": data}
     return render(request, "phonebook/contacts.html", context=context)
 
@@ -45,7 +57,6 @@ def generate_contacts(request, times):
 
     def create_random_person():
         gender = random.choice(['male', 'female'])
-        contact = None
         match gender:
             case 'male':
                 contact = Contacts(first_name=fake.first_name_male(),
@@ -57,6 +68,8 @@ def generate_contacts(request, times):
                                    last_name=fake.last_name_female(),
                                    middle_name=fake.middle_name_female(),
                                    phone_number=fake.phone_number())
+            case _:
+                contact = None
         return contact
 
     contacts_quantity = Contacts.objects.count()

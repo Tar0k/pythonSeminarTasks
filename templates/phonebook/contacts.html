@@ -5,22 +5,38 @@
     <title>Телефонный справочник</title>
 </head>
 <body>
-    <a href="{% url 'create_contact' %}">Добавить контакт</a>
-    <a href="{% url 'generate_contacts' times=10 %}">Сгенерировать данные</a>
-    <a href="{% url 'delete_contacts' %}">Удалить все контакты</a>
-    <hr>
-
-    <table border="1">
-        <caption>Таблица контактов</caption>
-        <tr>
-            <th>id</th>
-            <th>Имя</th>
-            <th>Отчество</th>
-            <th>Фамилия</th>
-            <th>Телефонный номер</th>
-            <th>Кнопки</th>
-        </tr>
-        {% for contact in data %}
+<a href="{% url 'create_contact' %}">Добавить контакт</a>
+<a href="{% url 'generate_contacts' times=10 %}">Сгенерировать данные</a>
+<a href="{% url 'delete_contacts' %}">Удалить все контакты</a>
+<hr>
+<h5>Фильтры</h5>
+<form method="post" action="{% url 'show_contacts' %}">
+    {% csrf_token %}
+    <label>
+        Имя: <input type='text' name='first_name' value='' />
+    </label>
+    <label>
+        Отчество: <input type='text' name='middle_name' value='' />
+    </label>
+    <label>
+        Фамилия: <input type='text' name='last_name' value='' />
+    </label>
+    <label>
+        Телефонный номер: <input type='text' name='phone_number' value='' />
+    </label>
+    <input type="submit" value="Отфильтровать">
+</form>
+<table border="1">
+    <caption>Таблица контактов</caption>
+    <tr>
+        <th>id</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Фамилия</th>
+        <th>Телефонный номер</th>
+        <th>Кнопки</th>
+    </tr>
+    {% for contact in data %}
         <tr>
             <td>{{ contact.id }}</td>
             <td>{{ contact.first_name }}</td>
@@ -33,7 +49,7 @@
             </td>
         </tr>
     {% endfor %}
-    </table>
+</table>
 
 </body>
 </html>
