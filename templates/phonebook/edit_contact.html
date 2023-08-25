@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Изменить контакт</title>
-</head>
-<body>
+{% extends 'layout/Base.html' %}
+
+{% block Title %}Изменить контакт{% endblock %}
+
+{% block Body %}
 <h4>Изменить контакт</h4>
 <form method="post" action=''>
     {% csrf_token %}
     {{ form.errors }}
     {{ form }}
     <input type="submit" value="Подтвердить">
-    <button onclick="location.href = '{% url 'show_contacts' %}'">Отмена</button>
+    <button type="button" onclick="location.href = '{% url 'show_contacts' %}'">Отмена</button>
 </form>
+{% endblock %}
 
-</body>
-</html>
+

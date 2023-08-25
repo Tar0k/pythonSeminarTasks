@@ -17,13 +17,13 @@ def show_contacts(request):
     if request.method == "POST":
         data = Contacts.objects
         if request.POST["first_name"] != "":
-            data = data.filter(first_name=request.POST["first_name"])
+            data = data.filter(first_name__contains=request.POST["first_name"])
         if request.POST["middle_name"] != "":
-            data = data.filter(middle_name=request.POST["middle_name"])
+            data = data.filter(middle_name__contains=request.POST["middle_name"])
         if request.POST["last_name"] != "":
-            data = data.filter(last_name=request.POST["last_name"])
+            data = data.filter(last_name__contains=request.POST["last_name"])
         if request.POST["phone_number"] != "":
-            data = data.filter(phone_number=request.POST["phone_number"])
+            data = data.filter(phone_number__contains=request.POST["phone_number"])
         data = data.all()
     else:
         data = Contacts.objects.all()
