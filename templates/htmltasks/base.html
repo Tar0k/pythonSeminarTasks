@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block Title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'htmltasks/css/styles.css' %}">
+</head>
+<header>
+    <nav class="nav_bar">
+        <ul><a href="{% url 'index' %}">Главная</a></ul>
+        <ul><a href="{% url 'catalog' %}">Каталог</a></ul>
+        <ul><a href="">Контакты</a></ul>
+    </nav>
+</header>
+<body>
+{% block Body %}{% endblock %}
+</body>
+</html>

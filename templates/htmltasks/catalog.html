@@ -1,0 +1,43 @@
+{% extends 'htmltasks/base.html' %}
+{% load static %}
+
+{% block Title %}Каталог{% endblock %}
+
+{% block Body %}
+    <h1 class="page_name">Каталог</h1>
+    <p class="paragraph_content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+        et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+        no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+        sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+        no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+
+    <p class="paragraph_content">
+    <img src="{% static 'htmltasks/img/laptop1.png'%}" alt="Картинка" width="150" height="150">
+    ИГРОВОЙ НОУТБУК THUNDEROBOT 911 PLUS XD
+    Игровой ноутбук с огромным экраном и производительной видеокартой RTX 3050 Ti для эффективного использования
+    технологии Nvidia DLSS. Получите еще больше FPS без потери качества, ведь кадры решают все. Поставляется без ОС.
+    </p>
+
+    <p class="paragraph_content">
+    <img src="{% static 'htmltasks/img/laptop2.png'%}" alt="Картинка" width="150" height="150">
+    НОУТБУК Lenovo ThinkPad X1 Fold
+    Lenovo ThinkPad X1 Fold оценили в России в 330 тысяч рублей. Как известно, для того, чтобы технология пошла в массы,
+    её возможности и потенциальные плюсы должны перевешивать минусы. И тут к ThinkPad X1 Fold тот же вопрос,
+    что и к смартфонам с гибким экраном: а оно надо? На мой взгляд, всё определяется размером экрана.
+    Например, у обычного флагмана в смартфонах размер экрана 6.7-6.9 дюйма. У Galaxy Z Fold2 – 7.6 дюйма.
+    Дают ли дополнительные 0.6-1 дюйм преимущество в работе, или минусы от толстого тяжелого смартфона перевешивают?
+    </p>
+
+    <p class="paragraph_content">
+    <img src="{% static 'htmltasks/img/laptop3.png'%}" alt="Картинка" width="150" height="150">
+    Ноутбук HUAWEI MateBook 13" Space Gray (53010FNQ)
+    Безрамочный экран ноутбука HUAWEI MateBook 13 подарит вам новый визуальный опыт.
+    Отношение экрана к крышке ноутбука составляет 88%, а рамка имеет ширину всего 4,4 мм.
+    Такие характеристики позволяют полностью погрузиться в происходящее на экране.
+    Яркая живая графика очарует вас и откроет вам новые грани реальности.
+    </p>
+{% endblock %}
